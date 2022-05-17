@@ -14,7 +14,7 @@ const firebaseAuthConfig = {
         },
 
     ],
-    signInSuccessUrl: '/',
+    signInSuccessUrl: '/chatroom',
     credentialHelper: 'none',
     callbacks: {
         signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {

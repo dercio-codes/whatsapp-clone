@@ -3,6 +3,7 @@ import { Box, Grid } from "@mui/material";
 import Contacts from "../components/contacts";
 import SearchBar from "../components/Searchbar";
 import Chat from "../components/chat";
+import Archived from "../components/archived";
 
 const ChatRoom = () => {
   return (
@@ -15,9 +16,9 @@ const ChatRoom = () => {
           overflowY: "scroll",
           background: "#111",
           color: "#eee",
-          //   padding:'8px'
         }}
       >
+        <Archived />
         <SearchBar />
         <Contacts />
       </Grid>

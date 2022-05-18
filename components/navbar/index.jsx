@@ -1,10 +1,11 @@
-import { Box, Grid, Avatar, Typography, Badge } from "@mui/material";
+import { Box, Grid, Avatar, Typography, Badge , Paper } from "@mui/material";
 import AutoModeOutlinedIcon from "@mui/icons-material/AutoModeOutlined";
 import ForumIcon from "@mui/icons-material/Forum";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
 import ChatOptions from "./chatOptions";
+import Settings from "./settings";
 
 const Navbar = () => {
   const currentProfile = {
@@ -14,10 +15,12 @@ const Navbar = () => {
     status: "Available",
   };
   return (
-    <Box
+    <Paper elevation={5}
       sx={{
         height: "10vh",
+        borderRadius:'0px',
         background: "#111",
+        borderBottom:'1px solid grey',
       }}
     >
       <Grid container>
@@ -57,7 +60,7 @@ const Navbar = () => {
           >
             <AutoModeOutlinedIcon />
             <ForumIcon />
-            <MoreVertIcon />
+            <Settings />
           </Box>
         </Grid>
         <Grid
@@ -111,7 +114,7 @@ const Navbar = () => {
           </Box>
         </Grid>
       </Grid>
-    </Box>
+    </Paper>
   );
 };
 

@@ -1,12 +1,17 @@
-import React from "react";
+import React , {useContext} from "react";
 import { Box, Grid } from "@mui/material";
 import Contacts from "../components/contacts";
 import SearchBar from "../components/Searchbar";
 import Chat from "../components/chat";
 import Archived from "../components/archived";
 import ChatBox from "../components/chatbox";
+import WallPaperContext from "../context/User"
 
 const ChatRoom = () => {
+  const currentWallPaper = useContext(WallPaperContext)
+  const { dispatch , wallPaper} = currentWallPaper;
+  console.log(currentWallPaper)
+
   return (
     <Grid container>
       <Grid
@@ -35,8 +40,8 @@ const ChatRoom = () => {
           sx={{
             backgroundSize: "cover",
             backgroundAttachment: "fixed",
-            backgroundImage:
-              'url("https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+            backgroundImage:`url("${currentWallPaper.wallPaper}")`
+              // 'url("https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
           }}
           >
           <Box

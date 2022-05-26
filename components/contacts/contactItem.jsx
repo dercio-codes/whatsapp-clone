@@ -3,12 +3,22 @@ import {
   Box,
   Avatar,
   Drawer,
+  Grid,
   Stack,
   Typography,
+  Paper,
   Badge,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Button,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import MessageRounded from "@mui/icons-material/MessageRounded";
 import CloseIcon from "@mui/icons-material/Close";
+import VideoCallRounded from "@mui/icons-material/VideoCallRounded";
+import PhoneCallbackRounded from "@mui/icons-material/PhoneCallbackRounded";
 
 const ContactItem = ({
   name,
@@ -28,12 +38,13 @@ const ContactItem = ({
       sx={{
         width: anchor === "top" || anchor === "bottom" ? "auto" : "350px",
         display: "flex",
+        background:"#111",
+        minHeight:'100vh',
         flexDirection: "column",
+        color:'#eee',
         alignItems: "center",
       }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <Box
         sx={{
@@ -43,10 +54,10 @@ const ContactItem = ({
           height: "64px",
         }}
       >
-        <Button sx={{ flex: 1 }} onClick={toggleDrawer(anchor, false)}>
+        <Button sx={{ flex: 3 }} onClick={toggleDrawer(anchor, false)}>
           <CloseIcon sx={{ fill: "#111" }} />
         </Button>
-        <Typography sx={{ flex: 4, textAlign: "center" }}>
+        <Typography sx={{ flex: 9, textAlign: "" }}>
           Contact Information
         </Typography>
       </Box>
@@ -55,9 +66,102 @@ const ContactItem = ({
         sx={{ cursor: "pointer", minWidth: "250px", minHeight: "250px" }}
         onClick={toggleDrawer(anchor, true)}
       />
-      
-      <Box sx={{ background :'red' , height:'250px' , width:'100%'}}>
-,,,,
+      <Typography
+        sx={{
+          fontWeight: "600",
+          fontSize: "28px",
+          textAlign: "center",
+          margin: "12px 0px",
+        }}
+      >
+        {name}
+      </Typography>
+      <Typography
+        sx={{ fontWeight: "600", textAlign: "center", margin: "8px 0px" }}
+      >
+        {messagesNumber}
+      </Typography>
+      <Box
+        sx={{
+          // background: "yellow",
+          height: "auto",
+          width: "100%",
+          display: "flex",
+          margin: "8px 0px 0px 0px",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Stack>
+          <MessageRounded sx={{ margin: "6px auto" }} />
+          <Typography margin={"6px 0px"}>Message</Typography>
+        </Stack>
+        <Stack>
+          <VideoCallRounded sx={{ margin: "6px auto" }} />
+          <Typography margin={"6px 0px"}>Video</Typography>
+        </Stack>
+        <Stack>
+          <PhoneCallbackRounded sx={{ margin: "6px auto" }} />
+          <Typography margin={"6px 0px"}>Phone</Typography>
+        </Stack>
+      </Box>
+      <Accordion
+        sx={{
+          background: "#111",
+          // color: "#ee",
+          boxShadow: "none",
+          width: "100%",
+        }}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon sx={{ fill: "" }} />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography fontWeight={"600"} fontSize={"12px"} color="#eee">Media,Links and Photos</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Box
+            sx={{
+              height: "180px",
+              // background: "green",
+              display: "flex",
+              // justifyContent:'space-evenly',
+              overflowY: "hidden",
+              overflowX: "auto",
+            }}
+          >
+            {[1, 2, 3, 4].map((item, index) => {
+              return (
+                <Paper elevation={2} sx={{ background:'transparent'}}>
+                  <Box key={index}
+                    sx={{
+                      // background: "red",
+                      cursor:'pointer',
+                      minWidth: "180px",
+                      height: "150px",
+                      margin: "16px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={"https://picsum.photos/200?random=" + item}
+                      style={{ width: "100%" }}
+                    />
+                  </Box>
+                </Paper>
+              );
+            })}
+          </Box>
+        </AccordionDetails>
+      </Accordion>
+      <Box>
+        <Grid container>
+        <Grid item ></Grid>
+        <Grid item ></Grid>
+
+        </Grid>
       </Box>
     </Box>
   );

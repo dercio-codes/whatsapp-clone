@@ -21,13 +21,12 @@ export default function Settings() {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        >
-        <MoreVertIcon
-          onClick={handleClick}
-          sx={{
-            fill: "#eee",
-          }}
-        />
+        onClick={handleClick}
+        sx={{
+          fill: "#eee",
+        }}
+      >
+        <MoreVertIcon />
       </IconButton>
       <Menu
         id="basic-menu"

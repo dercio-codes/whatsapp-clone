@@ -4,6 +4,7 @@ import Contacts from "../components/contacts";
 import SearchBar from "../components/Searchbar";
 import Chat from "../components/chat";
 import Archived from "../components/archived";
+import ChatBox from "../components/chatbox";
 
 const ChatRoom = () => {
   return (
@@ -19,18 +20,17 @@ const ChatRoom = () => {
         }}
       >
         <Archived />
-        <SearchBar />
+        {/* <SearchBar /> */}
         <Contacts />
       </Grid>
       <Grid
         item
         md={8.5}
         sx={{
-          height: "78vh",
-          overflowY: "scroll",
+          height: "100vh",
           background: "#111",
         }}
-      >
+        >
         <Box
           sx={{
             backgroundSize: "cover",
@@ -38,16 +38,27 @@ const ChatRoom = () => {
             backgroundImage:
               'url("https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
           }}
-        >
+          >
           <Box
             sx={{
+              overflowY: "scroll",
               padding: "8px",
-              minHeight: "78vh",
+              height: "75vh",
               background: "rgba(1,1,1,.5)",
             }}
           >
             <Chat />
           </Box>
+        </Box>
+        <Box
+          sx={{
+            height: "15vh",
+            // background: "red",
+            display:'flex',
+            alignItems:'center'
+          }}
+        >
+          <ChatBox />
         </Box>
       </Grid>
     </Grid>

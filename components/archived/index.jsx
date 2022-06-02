@@ -23,6 +23,7 @@ const Archived = () => {
           if (person.archived) {
             return (
               <ContactItem
+              key={person.name}
                 name={person.name}
                 userImage={person.picture}
                 date={person.latest_timestamp}

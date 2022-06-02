@@ -1,11 +1,13 @@
-import React , {useContext} from "react";
+import React, { useContext } from "react";
 import IconButton from "@mui/material/IconButton";
 import {
   Menu,
   Modal,
   Accordion,
   AccordionDetails,
+  InputAdornment,
   AccordionSummary,
+  TextField,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MenuItem from "@mui/material/MenuItem";
@@ -16,10 +18,11 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import { createClient } from "pexels";
 import WallPaperContext from "../../context/User";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Settings() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  // const [ modalState , setModalState] = React.useState(false)
+  const [wallpaperQuery, setWallPaperQuery] = React.useState("abstract");
   const [modalState, setModalState] = React.useState(false);
   const [images, setImages] = React.useState([]);
   const handleOpen = () => setModalState(true);
@@ -45,20 +48,36 @@ export default function Settings() {
     p: 4,
   };
 
-  const currentWallPaper = useContext(WallPaperContext)
+  const currentWallPaper = useContext(WallPaperContext);
   const { dispatch } = currentWallPaper;
 
   React.useEffect(() => {
     const client = createClient(
-      "563492ad6f91700001000001e491a00ab2cc42e3a753de05f2b67505"
+      "563492ad6f91700001000001c889742830444d5bbd12b9f922ad37ae"
+      // Blocked API KEY
+      // "563492ad6f91700001000001e491a00ab2cc42e3a753de05f2b67505"
     );
-    const query = "art";
+    const query = wallpaperQuery;
 
     client.photos.search({ query, per_page: 12 }).then((photos) => {
       console.log(photos);
       setImages(photos.photos);
     });
   }, []);
+
+  function searchQuery() {
+    const client = createClient(
+      "563492ad6f91700001000001c889742830444d5bbd12b9f922ad37ae"
+      // Blocked API KEY
+      // "563492ad6f91700001000001e491a00ab2cc42e3a753de05f2b67505"
+    );
+    const query = wallpaperQuery;
+
+    client.photos.search({ query, per_page: 12 }).then((photos) => {
+      console.log(photos);
+      setImages(photos.photos);
+    });
+  }
 
   return (
     <div>
@@ -188,9 +207,28 @@ export default function Settings() {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
+              <Box sx={{ width:'100%' , display:'flex' , justifyContent:'center'}}>
+                <TextField
+                
+                  sx={{ width: "90%", margin: "0 auto" }}
+                  value={wallpaperQuery}
+                  onChange={(e) => setWallPaperQuery(e.target.value)}
+                  InputLabelProps={{ style: { color: "#eee" } }}
+                  InputProps={{
+                    style: { border: "1px solid #eee" },
+                    endAdornment: (
+                      <InputAdornment>
+                        <IconButton>
+                          <SearchIcon sx={{ fill: "#eee" }} onClick={()=>{searchQuery()}} />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Box>
               <Box
                 sx={{
-                  height: "300px",
+                  height: "270px",
                   overflowY: "scroll",
                   // background: "yellow",
                   display: "flex",
@@ -205,11 +243,12 @@ export default function Settings() {
                         md={3.5}
                         sx={{ cursor: "pointer", margin: "auto" }}
                         onClick={() => {
-                          dispatch( {
+                          dispatch({
                             type: "SET_WALLPAPER",
                             payload: img.src.landscape,
                           });
-                          console.log("Clicked : " , img.src.landscape)
+                          setModalState(!modalState)
+                          // console.log("Clicked : " , img.src.landscape)
                         }}
                       >
                         <img

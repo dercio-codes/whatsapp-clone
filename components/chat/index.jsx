@@ -53,7 +53,7 @@ const Chat = () => {
       {
         dummyMessages.map((messageContent , index)=>{
           return(
-            <ChatItem message={messageContent.message} name={messageContent.name} time={messageContent.time} isMessageSent={messageContent.isMessageSent} />
+            <ChatItem key={index} message={messageContent.message} name={messageContent.name} time={messageContent.time} isMessageSent={messageContent.isMessageSent} />
           )
         })
       }

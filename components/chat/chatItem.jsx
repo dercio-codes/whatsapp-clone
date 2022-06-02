@@ -24,12 +24,6 @@ const ChatItem = ({ name, message, isMessageSent, time }) => {
           flexDirection: isMessageSent ? "row" : "row-reverse",
         }}
       >
-        {/* <Box
-          sx={{ maxidth: "80px", display: "flex", justifyContent: "center" }}
-        >
-          <Avatar src="" alt={"Fede"} sx={{ width: "48px", height: "48px" }} />
-        </Box>
-   */}
         <Box
           sx={{
             minWidth: "70%",
@@ -53,8 +47,7 @@ const ChatItem = ({ name, message, isMessageSent, time }) => {
               flexDirection: "column",
             }}
           >
-            {/* <Typography fontWeight={"900"}>{name}</Typography> */}
-            {/* <Divider sx={{ margin:"4px 0px" }}/> */}
+    
             <Typography>{message}</Typography>
             <Typography textAlign={"end"} fontSize={"14px"}>
               {time}

@@ -10,7 +10,7 @@ import WallPaperContext from "../context/User"
 const ChatRoom = () => {
   const currentWallPaper = useContext(WallPaperContext)
   const { dispatch , wallPaper} = currentWallPaper;
-  console.log(currentWallPaper)
+  // console.log(currentWallPaper)
 
   return (
     <Grid container>

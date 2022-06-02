@@ -7,14 +7,6 @@ import 'firebase/analytics'
 import 'firebase/performance'
 
 const clientCredentials = {
-    // apiKey: "AIzaSyC21ZnljReUXu-8Zlfc5UFUtzhUCrLpYAU",
-    // authDomain: "activefm-community-chat.firebaseapp.com",
-    // projectId: "activefm-community-chat",
-    // storageBucket: "activefm-community-chat.appspot.com",
-    // messagingSenderId: "332591026612",
-    // appId: "1:332591026612:web:358f5ccb647890745062e1"
-
-
     apiKey: "AIzaSyCi1Fr9lRoaRi4wWQmwEgrRCqFxsY3Ycdw",
     authDomain: "whatsapp-web-fbc3f.firebaseapp.com",
     projectId: "whatsapp-web-fbc3f",
